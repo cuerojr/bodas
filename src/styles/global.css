@@ -35,7 +35,7 @@ body {
   background: var(--paper);
   color: var(--ink);
   font-family: var(--font-sans);
-  font-size: 15px;
+  font-size: 1rem;
   line-height: 1.55;
 }
 a {
@@ -47,7 +47,7 @@ a {
   margin-inline: auto;
 }
 .hero {
-  min-height: 720px;
+  min-height: calc(100vh - 60px);
   position: relative;
   overflow: hidden;
   background: var(--olive);
@@ -85,7 +85,7 @@ a {
 }
 .monogram {
   font-family: var(--font-serif);
-  font-size: 27px;
+  font-size: 1.8rem;
   letter-spacing: -0.08em;
   line-height: 1;
 }
@@ -97,7 +97,7 @@ em {
 .nav-links {
   display: flex;
   gap: 30px;
-  font-size: 11px;
+  font-size: 1rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
 }
@@ -113,12 +113,12 @@ em {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding-top: 126px;
+  padding-top: 106px;
 }
 .eyebrow,
 .section-label {
   color: var(--clay);
-  font-size: 10px;
+  font-size: 1rem;
   letter-spacing: 0.22em;
   text-transform: uppercase;
   font-weight: 700;
@@ -137,7 +137,7 @@ em {
 }
 .hero-kicker {
   margin: 38px 0 4px;
-  font-size: 14px;
+  font-size: 1.2rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   opacity: 0.8;
@@ -156,7 +156,7 @@ h1 {
 }
 .hero-message {
   margin-top: 28px;
-  font-size: 16px;
+  font-size: 1.2rem;
   opacity: 0.82;
 }
 .scroll-cue {
@@ -204,7 +204,7 @@ h1 {
 .details-line {
   display: flex;
   gap: 12px;
-  font-size: 13px;
+  font-size: 1rem;
   color: var(--olive);
 }
 .info-strip {
@@ -367,7 +367,7 @@ h1 {
 }
 .gift-card p {
   font-family: var(--font-serif);
-  font-size: 23px;
+  font-size: 1.6rem;
   line-height: 1.15;
 }
 .qr-placeholder {
@@ -408,7 +408,7 @@ h1 {
 }
 .rsvp p {
   font-family: var(--font-serif);
-  font-size: 22px;
+  font-size: 1.6rem;
   line-height: 1.2;
 }
 .rsvp strong {
@@ -544,14 +544,14 @@ h1 {
 }
 .countdown-unit strong {
   font-family: var(--font-serif);
-  font-size: 48px;
+  font-size: 5rem;
   font-weight: 400;
   line-height: 1;
 }
 .countdown-unit span {
   margin-top: 7px;
   color: var(--clay);
-  font-size: 10px;
+  font-size: 1rem;
   letter-spacing: 0.13em;
   text-transform: uppercase;
 }
