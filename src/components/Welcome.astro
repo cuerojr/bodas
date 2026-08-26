@@ -1,210 +1,165 @@
 ---
-import astroLogo from '../assets/astro.svg';
-import background from '../assets/background.svg';
+import SectionLabel from "../components/SectionLabel.astro";
+import Schedule from "../components/Schedule.astro";
+import {
+  ChevronDown,
+  MapPin,
+  CalendarDays,
+  Sparkles,
+  Music2,
+  Gift,
+} from "lucide-astro";
+
+const daySchedule = [
+  ["12:00 hs", "Civil + bendición"],
+  ["13:30 hs", "Recepción y tapeo"],
+  ["14:00 hs", "Almuerzo de 3 pasos"],
+  ["16:00 hs", "Brindis y torta"],
+  ["17:00 hs", "Café de finalización"],
+];
+
+const nightSchedule = [
+  ["19:00 hs", "Tapeo, tragos y música"],
+  ["21:00 hs", "DJ, luces y celebración"],
+  ["22:00 hs", "Continúa el tapeo"],
+  ["00:00 hs", "Cierre final"],
+];
 ---
 
-<div id="container">
-	<img id="background" src={background.src} alt="" fetchpriority="high" />
-	<main>
-		<section id="hero">
-			<a href="https://astro.build"
-				><img src={astroLogo.src} width="115" height="48" alt="Astro Homepage" /></a
-			>
-			<h1>
-				To get started, open the <code><pre>src/pages</pre></code> directory in your project.
-			</h1>
-			<section id="links">
-				<a class="button" href="https://docs.astro.build">Read our docs</a>
-				<a href="https://astro.build/chat"
-					>Join our Discord <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 127.14 96.36"
-						><path
-							fill="currentColor"
-							d="M107.7 8.07A105.15 105.15 0 0 0 81.47 0a72.06 72.06 0 0 0-3.36 6.83 97.68 97.68 0 0 0-29.11 0A72.37 72.37 0 0 0 45.64 0a105.89 105.89 0 0 0-26.25 8.09C2.79 32.65-1.71 56.6.54 80.21a105.73 105.73 0 0 0 32.17 16.15 77.7 77.7 0 0 0 6.89-11.11 68.42 68.42 0 0 1-10.85-5.18c.91-.66 1.8-1.34 2.66-2a75.57 75.57 0 0 0 64.32 0c.87.71 1.76 1.39 2.66 2a68.68 68.68 0 0 1-10.87 5.19 77 77 0 0 0 6.89 11.1 105.25 105.25 0 0 0 32.19-16.14c2.64-27.38-4.51-51.11-18.9-72.15ZM42.45 65.69C36.18 65.69 31 60 31 53s5-12.74 11.43-12.74S54 46 53.89 53s-5.05 12.69-11.44 12.69Zm42.24 0C78.41 65.69 73.25 60 73.25 53s5-12.74 11.44-12.74S96.23 46 96.12 53s-5.04 12.69-11.43 12.69Z"
-						></path></svg
-					>
-				</a>
-			</section>
-		</section>
-	</main>
+<main>
+  <section class="hero" id="inicio">
+    <div class="hero-wash"></div>
+    <nav class="nav shell" aria-SectionLabel="Navegación principal">
+      <a class="monogram" href="#inicio" aria-SectionLabel="Julieta y Ezequiel"
+        >J<span>&</span>E</a
+      >
+      <div class="nav-links">
+        <a href="#celebracion">Celebración</a>
+        <a href="#regalos">Regalos</a>
+        <a href="#confirmar">Confirmar asistencia</a>
+      </div>
+    </nav>
+    <div class="hero-content shell">
+      <div class="eyebrow"><span></span> 06 · 12 · 2026 <span></span></div>
+      <p class="hero-kicker">Con mucha alegría</p>
+      <h1>Julieta <em>&</em><br />Ezequiel</h1>
+      <p class="hero-message">
+        Te invitamos a nuestro festejo,<br class="desktop-break" /> queremos que seas
+        parte.
+      </p>
+      <a href="#celebracion" class="scroll-cue" aria-SectionLabel="Ver detalles"
+        ><ChevronDown size={18} /></a
+      >
+    </div>
+    <div class="hero-ornament" aria-hidden="true">✳</div>
+  </section>
 
-	<a href="https://astro.build/blog/astro-7/" id="news" class="box">
-		<svg width="32" height="32" fill="none" xmlns="http://www.w3.org/2000/svg"
-			><path
-				d="M24.667 12c1.333 1.414 2 3.192 2 5.334 0 4.62-4.934 5.7-7.334 12C18.444 28.567 18 27.456 18 26c0-4.642 6.667-7.053 6.667-14Zm-5.334-5.333c1.6 1.65 2.4 3.43 2.4 5.333 0 6.602-8.06 7.59-6.4 17.334C13.111 27.787 12 25.564 12 22.666c0-4.434 7.333-8 7.333-16Zm-6-5.333C15.111 3.555 16 5.556 16 7.333c0 8.333-11.333 10.962-5.333 22-3.488-.774-6-4-6-8 0-8.667 8.666-10 8.666-20Z"
-				fill="#111827"></path></svg
-		>
-		<h2>What's New in Astro 7.0?</h2>
-		<p>
-			Rust-powered compiler, advanced routing, AI agent support, and more! Click to explore Astro
-			7.0's new features.
-		</p>
-	</a>
-</div>
+  <section class="intro section-pad shell">
+    <SectionLabel>Nuestra boda</SectionLabel>
+    <div class="intro-grid">
+      <h2>Un día para<br /><em>recordar siempre.</em></h2>
+      <div>
+        <p class="lead">
+          Un día completo al aire libre, en contacto con la naturaleza, con menú
+          criollo a las brasas y un festejo nocturno para celebrar juntos.
+        </p>
+        <div class="details-line">
+          <MapPin size={17} /><span
+            >El Campito Eventos Ibarlucea<br />Ruta 34 S y Los Naranjos, Santa
+            Fe</span>
+        </div>
+      </div>
+    </div>
+    <div class="info-strip">
+      <div>
+        <CalendarDays size={20} /><span
+          ><small>Fecha</small>6 de diciembre de 2026</span>
+      </div>
+      <div>
+        <Sparkles size={20} /><span
+          ><small>Dress code</small>Elegant Sport</span>
+      </div>
+      <div>
+        <Music2 size={20} /><span><small>Temática</small>Día de campo</span>
+      </div>
+    </div>
+  </section>
 
-<style>
-	#background {
-		position: fixed;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-		z-index: -1;
-		filter: blur(100px);
-	}
+  <section class="celebration section-pad" id="celebracion">
+    <div class="shell">
+      <SectionLabel>Acerca de la celebración</SectionLabel>
+      <div class="section-heading">
+        <h2>Momentos que vamos<br /><em>a compartir</em></h2><p>
+          Una celebración en dos tiempos,<br />pensada para disfrutar sin apuro.
+        </p>
+      </div>
+      <div class="timeline-grid">
+        <article class="moment-card day-card">
+          <div class="moment-top">
+            <span class="moment-type">01 / DAY</span><span class="moment-mark"
+              >☼</span>
+          </div><h3>Ceremonia <em>&</em><br />Almuerzo Criollo</h3><Schedule
+            items={daySchedule}
+          />
+        </article>
+        <article class="break-card">
+          <div class="break-icon">◌</div><h3>Break</h3><p>
+            Descanso para la<br />segunda parte
+          </p><span>17:00 — 19:00 hs</span><small
+            >Continúa la celebración</small>
+        </article>
+        <article class="moment-card night-card">
+          <div class="moment-top">
+            <span class="moment-type">02 / NIGHT</span><span class="moment-mark"
+              >✦</span>
+          </div><h3>Previa <em>&</em><br />Party</h3><Schedule
+            items={nightSchedule}
+          />
+        </article>
+      </div>
+    </div>
+  </section>
 
-	#container {
-		font-family: Inter, Roboto, 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', Arial, sans-serif;
-		height: 100%;
-	}
+  <section class="gift section-pad shell" id="regalos">
+    <div class="gift-copy">
+      <SectionLabel>Gift registry</SectionLabel><h2>
+        Tu presencia es<br /><em>nuestro mejor regalo.</em>
+      </h2><p>
+        Si sentís que querés regalarnos algo, armamos una pequeña lista con
+        algunos de nuestros objetos más deseados.
+      </p><a
+        class="text-link"
+        href="mailto:hello@reallygreatsite.com?subject=Registry%20No.%2012345"
+        >Ver lista de regalos <span>↗</span></a>
+    </div>
+    <div class="gift-card">
+      <Gift size={25} /><p>
+        También podés acompañarnos<br />en el comienzo de nuestra vida<br />de
+        casados.
+      </p><div
+        class="qr-placeholder"
+        aria-SectionLabel="Código QR para contribuciones"
+      >
+        <span>QR</span>
+      </div><small
+        >Escaneá el QR o escribinos a<br />hello@reallygreatsite.com</small>
+    </div>
+  </section>
 
-	main {
-		height: 100%;
-		display: flex;
-		justify-content: center;
-	}
+  <section class="rsvp" id="confirmar">
+    <div class="shell rsvp-inner">
+      <SectionLabel>Un último detalle</SectionLabel><h2>¿Nos acompañás?</h2><p>
+        Confirmar asistencia antes del<br /><strong>6 de noviembre 2026</strong>
+      </p><a
+        class="button"
+        href="mailto:hello@reallygreatsite.com?subject=Confirmación%20de%20asistencia"
+        >Confirmar asistencia <span>↗</span></a>
+    </div>
+  </section>
 
-	#hero {
-		display: flex;
-		align-items: start;
-		flex-direction: column;
-		justify-content: center;
-		padding: 16px;
-	}
-
-	h1 {
-		font-size: 22px;
-		margin-top: 0.25em;
-	}
-
-	#links {
-		display: flex;
-		gap: 16px;
-	}
-
-	#links a {
-		display: flex;
-		align-items: center;
-		padding: 10px 12px;
-		color: #111827;
-		text-decoration: none;
-		transition: color 0.2s;
-	}
-
-	#links a:hover {
-		color: rgb(78, 80, 86);
-	}
-
-	#links a svg {
-		height: 1em;
-		margin-left: 8px;
-	}
-
-	#links a.button {
-		color: white;
-		background: linear-gradient(83.21deg, #3245ff 0%, #bc52ee 100%);
-		box-shadow:
-			inset 0 0 0 1px rgba(255, 255, 255, 0.12),
-			inset 0 -2px 0 rgba(0, 0, 0, 0.24);
-		border-radius: 10px;
-	}
-
-	#links a.button:hover {
-		color: rgb(230, 230, 230);
-		box-shadow: none;
-	}
-
-	pre {
-		font-family:
-			ui-monospace, 'Cascadia Code', 'Source Code Pro', Menlo, Consolas, 'DejaVu Sans Mono',
-			monospace;
-		font-weight: normal;
-		background: linear-gradient(14deg, #d83333 0%, #f041ff 100%);
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-clip: text;
-		margin: 0;
-	}
-
-	h2 {
-		margin: 0 0 1em;
-		font-weight: normal;
-		color: #111827;
-		font-size: 20px;
-	}
-
-	p {
-		color: #4b5563;
-		font-size: 16px;
-		line-height: 24px;
-		letter-spacing: -0.006em;
-		margin: 0;
-	}
-
-	code {
-		display: inline-block;
-		background:
-			linear-gradient(66.77deg, #f3cddd 0%, #f5cee7 100%) padding-box,
-			linear-gradient(155deg, #d83333 0%, #f041ff 18%, #f5cee7 45%) border-box;
-		border-radius: 8px;
-		border: 1px solid transparent;
-		padding: 6px 8px;
-	}
-
-	.box {
-		padding: 16px;
-		background: rgba(255, 255, 255, 1);
-		border-radius: 16px;
-		border: 1px solid white;
-	}
-
-	#news {
-		position: absolute;
-		bottom: 16px;
-		right: 16px;
-		max-width: 300px;
-		text-decoration: none;
-		transition: background 0.2s;
-		backdrop-filter: blur(50px);
-	}
-
-	#news:hover {
-		background: rgba(255, 255, 255, 0.55);
-	}
-
-	@media screen and (max-height: 368px) {
-		#news {
-			display: none;
-		}
-	}
-
-	@media screen and (max-width: 768px) {
-		#container {
-			display: flex;
-			flex-direction: column;
-		}
-
-		#hero {
-			display: block;
-			padding-top: 10%;
-		}
-
-		#links {
-			flex-wrap: wrap;
-		}
-
-		#links a.button {
-			padding: 14px 18px;
-		}
-
-		#news {
-			right: 16px;
-			left: 16px;
-			bottom: 2.5rem;
-			max-width: 100%;
-		}
-
-		h1 {
-			line-height: 1.5;
-		}
-	}
-</style>
+  <footer class="footer shell">
+    <div class="monogram">J<span>&</span>E</div><p>
+      “Por encima de todo, vístanse de amor,<br />que es el vínculo perfecto.”
+    </p><span>Colosenses 3:14</span>
+  </footer>
+</main>

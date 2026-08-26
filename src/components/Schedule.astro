@@ -1,0 +1,14 @@
+---
+interface Props {
+  items: string[][];
+}
+const { items } = Astro.props;
+---
+<div class="schedule">
+  {items.map(([time, activity]) => (
+    <div class="schedule-row">
+      <span>{time}</span>
+      <strong>{activity}</strong>
+    </div>
+  ))}
+</div>
