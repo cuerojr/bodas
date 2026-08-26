@@ -1,0 +1,89 @@
+---
+// WeddingPage.astro
+// Landing de boda — versión Astro (sin dependencia de framework JS)
+
+const daySchedule: [string, string][] = [
+  ["12:00 hs", "Civil + bendición"],
+  ["13:30 hs", "Recepción y tapeo"],
+  ["14:00 hs", "Almuerzo de 3 pasos"],
+  ["16:00 hs", "Brindis y torta"],
+  ["17:00 hs", "Café de finalización"],
+];
+
+const nightSchedule: [string, string][] = [
+  ["19:00 hs", "Tapeo, tragos y música"],
+  ["21:00 hs", "DJ, luces y celebración"],
+  ["22:00 hs", "Continúa el tapeo"],
+  ["00:00 hs", "Cierre final"],
+];
+
+const weddingDateISO = "2026-12-06T12:00:00-03:00";
+---
+
+<section
+  class="countdown"
+  aria-label="Cuenta regresiva para la boda"
+  data-wedding-date={weddingDateISO}
+>
+  <div class="shell countdown-inner">
+    <div>
+      <p class="section-label">Falta cada vez menos</p>
+      <h2>Nos vemos en <em>la boda.</em></h2>
+    </div>
+    <div class="countdown-units" role="timer" aria-live="polite">
+      <div class="countdown-unit">
+        <strong data-unit="days">00</strong><span>Días</span>
+      </div>
+      <div class="countdown-unit">
+        <strong data-unit="hours">00</strong><span>Horas</span>
+      </div>
+      <div class="countdown-unit">
+        <strong data-unit="minutes">00</strong><span>Minutos</span>
+      </div>
+      <div class="countdown-unit">
+        <strong data-unit="seconds">00</strong><span>Segundos</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Countdown — corre en el cliente, sin necesidad de un framework
+  function initCountdown() {
+    const section = document.querySelector<HTMLElement>(
+      ".countdown[data-wedding-date]",
+    );
+    if (!section) return;
+
+    const weddingDate = new Date(section.dataset.weddingDate!).getTime();
+    const daysEl = section.querySelector<HTMLElement>('[data-unit="days"]');
+    const hoursEl = section.querySelector<HTMLElement>('[data-unit="hours"]');
+    const minutesEl = section.querySelector<HTMLElement>(
+      '[data-unit="minutes"]',
+    );
+    const secondsEl = section.querySelector<HTMLElement>(
+      '[data-unit="seconds"]',
+    );
+
+    function tick() {
+      const remaining = weddingDate - Date.now();
+      const totalSeconds = Math.max(0, Math.floor(remaining / 1000));
+      const days = Math.floor(totalSeconds / 86400);
+      const hours = Math.floor((totalSeconds % 86400) / 3600);
+      const minutes = Math.floor((totalSeconds % 3600) / 60);
+      const seconds = totalSeconds % 60;
+
+      if (daysEl) daysEl.textContent = String(days).padStart(2, "0");
+      if (hoursEl) hoursEl.textContent = String(hours).padStart(2, "0");
+      if (minutesEl) minutesEl.textContent = String(minutes).padStart(2, "0");
+      if (secondsEl) secondsEl.textContent = String(seconds).padStart(2, "0");
+    }
+
+    tick();
+    setInterval(tick, 1000);
+  }
+
+  initCountdown();
+  // Si usás View Transitions de Astro, reinicializá al navegar:
+  document.addEventListener("astro:page-load", initCountdown);
+</script>
