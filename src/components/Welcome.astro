@@ -58,19 +58,29 @@ const nightSchedule = [
   <section class="intro section-pad shell">
     <SectionLabel>Nuestra boda</SectionLabel>
     <div class="intro-grid">
-      <h2>Un día para<br /><em>recordar siempre.</em></h2>
       <div>
-        <p class="lead">
-          Un día completo al aire libre, en contacto con la naturaleza, con menú
-          criollo a las brasas y un festejo nocturno para celebrar juntos.
-        </p>
-        <div class="details-line">
-          <MapPin size={17} /><span
-            >El Campito Eventos Ibarlucea<br />Ruta 34 S y Los Naranjos, Santa
-            Fe</span
-          >
+        <h2 class="text-[var(--olive)]">Un día para<br /><em>recordar siempre.</em></h2>
+        <div class="pt-8">
+          <p class="lead">
+            Un día completo al aire libre, en contacto con la naturaleza, con
+            menú criollo a las brasas y un festejo nocturno para celebrar
+            juntos.
+          </p>
+          <div class="details-line">
+            <MapPin size={17} /><span
+              >El Campito Eventos Ibarlucea<br />Ruta 34 S y Los Naranjos, Santa
+              Fe</span
+            >
+          </div>
         </div>
       </div>
+      <video
+        class="w-full "
+        crossorigin="anonymous"
+        src="/public/dia.mp4"
+        autoplay
+        muted
+        loop></video>
     </div>
     <div class="info-strip">
       <div>
@@ -79,7 +89,8 @@ const nightSchedule = [
         >
       </div>
       <div>
-        <Sparkles size={20} /><span><small>Código de vestimenta</small>Elegante Sport</span
+        <Sparkles size={20} /><span
+          ><small>Código de vestimenta</small>Elegante Sport</span
         >
       </div>
       <div>
@@ -92,7 +103,7 @@ const nightSchedule = [
     <div class="shell">
       <SectionLabel>Acerca de la celebración</SectionLabel>
       <div class="section-heading">
-        <h2>Momentos que vamos<br /><em>a compartir</em></h2><p>
+        <h2 class="text-[var(--olive)]">Momentos que vamos<br /><em>a compartir</em></h2><p>
           Una celebración en dos tiempos,<br />pensada para disfrutar sin apuro.
         </p>
       </div>
@@ -128,7 +139,7 @@ const nightSchedule = [
   <section class="gift section-pad shell" id="regalos">
     <div class="gift-copy">
       <SectionLabel>Gift registry</SectionLabel>
-	  <h2>
+      <h2 class="text-[var(--olive)]">
         Tu presencia es<br /><em>nuestro mejor regalo.</em>
       </h2>
     </div>
@@ -149,7 +160,8 @@ const nightSchedule = [
 
   <section class="rsvp" id="confirmar">
     <div class="shell rsvp-inner">
-      <SectionLabel>Un último detalle</SectionLabel><h2>¿Nos acompañás?</h2><p>
+      <SectionLabel>Un último detalle</SectionLabel>
+	  <h2>¿Nos acompañás?</h2><p>
         Confirmar asistencia antes del<br /><strong>6 de noviembre 2026</strong>
       </p><a
         class="button"
