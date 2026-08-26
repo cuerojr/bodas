@@ -559,3 +559,15 @@ h1 {
 .intro {
   background: var(--paper);
 }
+
+//gsap
+
+#smooth-wrapper {
+  overflow: hidden;
+  position: fixed;
+  inset: 0;
+}
+#smooth-content {
+  overflow: visible;
+  width: 100%;
+}

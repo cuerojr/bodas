@@ -28,10 +28,26 @@ const {
     <meta name="description" content={description} />
   </head>
   <body>
-    <slot />
+    <div id="smooth-wrapper">
+      <div id="smooth-content">
+        <slot />
+      </div>
+    </div>
+    <script>
+      import { gsap } from "gsap";
+      import { ScrollSmoother } from "gsap/ScrollSmoother";
+      import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+      gsap.registerPlugin(ScrollSmoother, ScrollTrigger);
+
+      ScrollSmoother.create({
+        wrapper: "#smooth-wrapper",
+        content: "#smooth-content",
+        smooth: 1.2,
+        effects: true,
+      });
+    </script>
   </body>
 </html>
 
-<style>
-	
-</style>
+<style></style>
