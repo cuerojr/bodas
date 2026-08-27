@@ -1,14 +1,16 @@
 ---
+import type { ScheduleItem } from './Celebration.astro';
+
 interface Props {
-  items: string[][];
+  items: ScheduleItem[];
 }
 const { items } = Astro.props;
 ---
 <div class="schedule">
-  {items.map(([time, activity]) => (
+  {items.map(({ time, description }) => (
     <div class="schedule-row">
       <span>{time}</span>
-      <strong>{activity}</strong>
+      <strong>{description}</strong>
     </div>
   ))}
 </div>

@@ -10,21 +10,11 @@ import {
   Gift,
 } from "lucide-astro";
 import CountDown from "./CountDown.astro";
+import Footer from "./Footer.astro";
+import Confirmation from "./Confirmation.astro";
+import Gifts from "./Gifts.astro";
+import Celebration, { type ScheduleItem } from "./Celebration.astro";
 
-const daySchedule = [
-  ["12:00 hs", "Civil + bendición"],
-  ["13:30 hs", "Recepción y tapeo"],
-  ["14:00 hs", "Almuerzo de 3 pasos"],
-  ["16:00 hs", "Brindis y torta"],
-  ["17:00 hs", "Café de finalización"],
-];
-
-const nightSchedule = [
-  ["19:00 hs", "Tapeo, tragos y música"],
-  ["21:00 hs", "DJ, luces y celebración"],
-  ["22:00 hs", "Continúa el tapeo"],
-  ["00:00 hs", "Cierre final"],
-];
 ---
 
 <main>
@@ -100,81 +90,11 @@ const nightSchedule = [
     </div>
   </section>
 
-  <section class="celebration section-pad" id="celebracion">
-    <div class="shell">
-      <SectionLabel>Acerca de la celebración</SectionLabel>
-      <div class="section-heading">
-        <h2 class="text-[var(--olive)]">Momentos que vamos<br /><em>a compartir</em></h2><p>
-          Una celebración en dos tiempos,<br />pensada para disfrutar sin apuro.
-        </p>
-      </div>
-      <div class="timeline-grid">
-        <article class="moment-card day-card">
-          <div class="moment-top">
-            <span class="moment-type">01 / DAY</span><span class="moment-mark"
-              >☼</span
-            >
-          </div><h3>Ceremonia <em>&</em><br />Almuerzo Criollo</h3><Schedule
-            items={daySchedule}
-          />
-        </article>
-        <article class="break-card">
-          <div class="break-icon">◌</div><h3>Break</h3><p>
-            Descanso para la<br />segunda parte
-          </p><span>17:00 — 19:00 hs</span><small>Continúa la celebración</small
-          >
-        </article>
-        <article class="moment-card night-card">
-          <div class="moment-top">
-            <span class="moment-type">02 / NIGHT</span><span class="moment-mark"
-              >✦</span
-            >
-          </div><h3>Previa <em>&</em><br />Party</h3><Schedule
-            items={nightSchedule}
-          />
-        </article>
-      </div>
-    </div>
-  </section>
+  <Celebration />
 
-  <section class="gift section-pad shell" id="regalos">
-    <div class="gift-copy">
-      <SectionLabel>Formas de pago</SectionLabel>
-      <h2 class="text-[var(--olive)] pt-8">
-        Tu presencia es<br /><em>nuestro mejor regalo.</em>
-      </h2>
-    </div>
-    <div class="gift-card">
-      <p>
-        También podés acompañarnos<br />en el comienzo de nuestra vida<br />de
-        casados.
-      </p><div
-        class="qr-placeholder"
-        aria-SectionLabel="Código QR para contribuciones"
-      >
-        <span>QR</span>
-      </div><small
-        >Escaneá el QR o escribinos a<br />hello@reallygreatsite.com</small
-      >
-    </div>
-  </section>
+  <Gifts />
 
-  <section class="rsvp" id="confirmar">
-    <div class="shell rsvp-inner">
-      <SectionLabel>Un último detalle</SectionLabel>
-	  <h2>¿Nos acompañás?</h2><p>
-        Confirmar asistencia antes del<br /><strong>6 de noviembre 2026</strong>
-      </p><a
-        class="button"
-        href="mailto:hello@reallygreatsite.com?subject=Confirmación%20de%20asistencia"
-        >Confirmar asistencia <span>↗</span></a
-      >
-    </div>
-  </section>
+  <Confirmation />
 
-  <footer class="footer shell">
-    <div class="monogram">J<span>&</span>E</div><p>
-      “Por encima de todo, vístanse de amor,<br />que es el vínculo perfecto.”
-    </p><span>Colosenses 3:14</span>
-  </footer>
+  <Footer />
 </main>

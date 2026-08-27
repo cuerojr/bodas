@@ -1,0 +1,62 @@
+---
+import Schedule from "./Schedule.astro";
+import SectionLabel from "./SectionLabel.astro";
+
+export interface ScheduleItem {
+  time: string;
+  description: string;
+}
+
+const daySchedule: ScheduleItem[] = [
+  { time: "12:00 hs", description: "Civil + bendición" },
+  { time: "13:30 hs", description: "Recepción y tapeo" },
+  { time: "14:00 hs", description: "Almuerzo de 3 pasos" },
+  { time: "16:00 hs", description: "Brindis y torta" },
+  { time: "17:00 hs", description: "Café de finalización" },
+];
+
+const nightSchedule: ScheduleItem[] = [
+  { time: "19:00 hs", description: "Tapeo, tragos y música" },
+  { time: "21:00 hs", description: "DJ, luces y celebración" },
+  { time: "22:00 hs", description: "Continúa el tapeo" },
+  { time: "00:00 hs", description: "Cierre final" },
+];
+---
+
+<section class="celebration section-pad" id="celebracion">
+    <div class="shell">
+      <SectionLabel>Acerca de la celebración</SectionLabel>
+      <div class="section-heading">
+        <h2 class="text-[var(--olive)]">Momentos que vamos<br /><em>a compartir</em></h2><p>
+          Una celebración en dos tiempos,<br />pensada para disfrutar sin apuro.
+        </p>
+      </div>
+      <div class="timeline-grid">
+        <article class="moment-card day-card">
+          <div class="moment-top">
+            <span class="moment-type">01 / DAY</span><span class="moment-mark"
+              >☼</span
+            >
+          </div><h3>Ceremonia <em>&</em><br />Almuerzo Criollo</h3>
+          <Schedule
+            items={daySchedule}
+          />
+        </article>
+        <article class="break-card">
+          <div class="break-icon">◌</div><h3>Break</h3><p>
+            Descanso para la<br />segunda parte
+          </p><span>17:00 — 19:00 hs</span><span>Continúa la celebración</span
+          >
+        </article>
+        <article class="moment-card night-card">
+          <div class="moment-top">
+            <span class="moment-type">02 / NIGHT</span><span class="moment-mark"
+              >✦</span
+            >
+          </div><h3>Previa <em>&</em><br />Party</h3><Schedule
+            items={nightSchedule}
+          />
+        </article>
+      </div>
+    </div>
+  </section>
