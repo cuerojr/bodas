@@ -1,0 +1,108 @@
+---
+// RsvpModal.astro
+---
+
+<dialog id="rsvp-modal" class="rsvp-modal m-auto max-w-[420px] w-[calc(100%-2rem)] max-h-[calc(100vh-2rem)] overflow-y-auto open:animate-fade-in">
+  <div class="rsvp-modal-inner">
+    <button type="button" class="rsvp-modal-close" aria-label="Cerrar">✕</button
+    >
+
+    <h3 class="font-semibold">Confirmar asistencia</h3>
+    <p class="rsvp-modal-sub">Completá tus datos y nos vemos pronto ✨</p>
+
+    <form id="rsvp-form" class="rsvp-fields">
+      <div class="field">
+        <label for="rsvp-nombre">Nombre y apellido</label>
+        <input
+          type="text"
+          id="rsvp-nombre"
+          name="nombre"
+          required
+          autocomplete="name"
+          placeholder="Ej: Nico Fernández"
+        />
+      </div>
+
+      <div class="field">
+        <label for="rsvp-restriccion">Restricción alimentaria</label>
+        <select id="rsvp-restriccion" name="restriccion">
+          <option value="ninguna">Ninguna</option>
+          <option value="vegetariano">Vegetariano</option>
+          <option value="vegano">Vegano</option>
+          <option value="celiaco">Celíaco / sin TACC</option>
+          <option value="otra">Otra (contame en el comentario)</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="rsvp-comentario">Comentario</label>
+        <textarea
+          id="rsvp-comentario"
+          name="comentario"
+          rows="3"
+          placeholder="Alguna alergia, con quién venís, algo que quieras contarnos..."
+        ></textarea>
+      </div>
+
+      <button type="submit" class="button rsvp-submit cursor-pointer">
+        Enviar confirmación <span>↗</span>
+      </button>
+
+      <p class="rsvp-status" role="status" aria-live="polite"></p>
+    </form>
+  </div>
+</dialog>
+
+<script>
+  const modal = document.getElementById("rsvp-modal") as HTMLDialogElement;
+  const openBtn = document.getElementById("confirmar-btn");
+  const closeBtn = modal?.querySelector(".rsvp-modal-close");
+  const form = document.getElementById("rsvp-form") as HTMLFormElement;
+  const status = modal?.querySelector(".rsvp-status");
+
+  openBtn?.addEventListener("click", () => modal?.showModal());
+  closeBtn?.addEventListener("click", () => modal?.close());
+
+  // Cerrar al clickear el backdrop
+  modal?.addEventListener("click", (e) => {
+    if (e.target === modal) modal.close();
+  });
+
+  // Número de WhatsApp que recibe las confirmaciones (código de país + número, sin +, sin espacios)
+  const WHATSAPP_NUMBER = "5493416445720"; // TODO: reemplazar por el número real
+
+  form?.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const data = Object.fromEntries(new FormData(form)) as Record<string, string>;
+
+    const restricciones: Record<string, string> = {
+      ninguna: "Ninguna",
+      vegetariano: "Vegetariano",
+      vegano: "Vegano",
+      celiaco: "Celíaco / sin TACC",
+      otra: "Otra (ver comentario)",
+    };
+    const today = new Date()
+
+    const lineas = [
+      `¡Hola! Confirmo mi asistencia a la boda hoy ${today.toLocaleDateString()}`,
+      "",
+      `Nombre y apellido: ${data.nombre}`,
+      `Restricción alimentaria: ${restricciones[data.restriccion] ?? data.restriccion}`,
+    ];
+
+    if (data.comentario?.trim()) {
+      lineas.push(`Comentario: ${data.comentario.trim()}`);
+    }
+
+    const mensaje = encodeURIComponent(lineas.join("\n"));
+    const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${mensaje}`;
+
+    if (status) status.textContent = "Abriendo WhatsApp...";
+
+    window.open(url, "_blank", "noopener,noreferrer");
+
+    form.reset();
+    setTimeout(() => modal?.close(), 800);
+  });
+</script>
