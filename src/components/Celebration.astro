@@ -12,7 +12,7 @@ const daySchedule: ScheduleItem[] = [
   { time: "13:30 hs", description: "Recepción y tapeo" },
   { time: "14:00 hs", description: "Almuerzo de 3 pasos" },
   { time: "16:00 hs", description: "Brindis y torta" },
-  { time: "17:00 hs", description: "Café de finalización" },
+  { time: "17:00 hs", description: "Mesa dulce de finalización" },
 ];
 
 const nightSchedule: ScheduleItem[] = [
@@ -24,39 +24,41 @@ const nightSchedule: ScheduleItem[] = [
 ---
 
 <section class="celebration section-pad" id="celebracion">
-    <div class="shell">
-      <SectionLabel>Acerca de la celebración</SectionLabel>
-      <div class="section-heading">
-        <h2 class="text-[var(--olive)]">Momentos que vamos<br /><em>a compartir</em></h2><p>
-          Una celebración en dos tiempos,<br />pensada para disfrutar sin apuro.
+  <div class="shell">
+    <SectionLabel>Acerca de la celebración</SectionLabel>
+    <div class="section-heading">
+      <div>
+        <h2 class="text-[var(--olive)]">
+          Momentos que vamos<br /><em>a compartir</em>
+        </h2>
+        <p class="pt-8">
+          Una celebración en dos tiempos, pensada para disfrutar sin apuro.
         </p>
       </div>
-      <div class="timeline-grid">
-        <article class="moment-card day-card">
-          <div class="moment-top">
-            <span class="moment-type">01 / DAY</span><span class="moment-mark"
-              >☼</span
-            >
-          </div><h3>Ceremonia <em>&</em><br />Almuerzo Criollo</h3>
-          <Schedule
-            items={daySchedule}
-          />
-        </article>
-        <article class="break-card">
-          <div class="break-icon">◌</div><h3>Break</h3><p>
-            Descanso para la<br />segunda parte
-          </p><span>17:00 — 19:00 hs</span><span>Continúa la celebración</span
-          >
-        </article>
-        <article class="moment-card night-card">
-          <div class="moment-top">
-            <span class="moment-type">02 / NIGHT</span><span class="moment-mark"
-              >✦</span
-            >
-          </div><h3>Previa <em>&</em><br />Party</h3><Schedule
-            items={nightSchedule}
-          />
-        </article>
-      </div>
     </div>
-  </section>
+    <div class="timeline-grid">
+      <article class="moment-card day-card">
+        <div class="moment-top">
+          <span class="moment-type">01 / DAY</span><span class="moment-mark"
+            >☼</span
+          >
+        </div><h3>Ceremonia <em>&</em><br />Almuerzo Criollo</h3>
+        <Schedule items={daySchedule} />
+      </article>
+      <article class="break-card">
+        <div class="break-icon">◌</div><h3>Break</h3><p>
+          Descanso para la<br />segunda parte
+        </p><span>17:00 — 19:00 hs</span><span>Continúa la celebración</span>
+      </article>
+      <article class="moment-card night-card">
+        <div class="moment-top">
+          <span class="moment-type">02 / NIGHT</span><span class="moment-mark"
+            >✦</span
+          >
+        </div><h3>Previa <em>&</em><br />Party</h3><Schedule
+          items={nightSchedule}
+        />
+      </article>
+    </div>
+  </div>
+</section>

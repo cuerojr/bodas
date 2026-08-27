@@ -1,25 +1,36 @@
 ---
+import { ChevronDown } from "lucide-astro";
 import SectionLabel from "./SectionLabel.astro";
 ---
 
 <section class="gift section-pad shell" id="regalos">
-    <div class="gift-copy">
-      <SectionLabel>Formas de pago</SectionLabel>
-      <h2 class="text-[var(--olive)] pt-8">
-        Tu presencia es<br /><em>nuestro mejor regalo.</em>
-      </h2>
+  <div class="gift-copy">
+    <SectionLabel>Formas de pago</SectionLabel>
+    <h2 class="text-[var(--olive)] pt-8">
+      Tu presencia es<br /><em>nuestro mejor regalo.</em>
+    </h2>
+    <p class="pt-8 text-balance">Se reciben pagos hasta el 6 de noviembre de 2026, los valores pueden llegar a actualizarse mes a mes.</p>
+  </div>
+  <div class="grid grid-cols-1 gap-4">
+    <div class="gift-card">
+      <p class="font-semibold pb-4">$ 128.000</p>
+      <span
+        >por transferencia o efectivo en un pago
+        <br />alias: ezeyjuliboda <br />
+        </span
+      >
     </div>
     <div class="gift-card">
-      <p>
-        También podés acompañarnos<br />en el comienzo de nuestra vida<br />de
-        casados.
-      </p><div
-        class="qr-placeholder"
-        aria-SectionLabel="Código QR para contribuciones"
-      >
-        <span>QR</span>
-      </div><small
-        >Escaneá el QR o escribinos a<br />hello@reallygreatsite.com</small
-      >
+      <p class="font-semibold pb-4">3 cuotas de $ 48.700</p> 
+      <span>con tarjeta de débito o billeteras virtuales<br> con Go cuotas.</span>
+      <div>
+        <a
+        class="button-dark d-block"
+        target="_blank"
+        href="https://www.gocuotas.com/payment_link/checkouts/246014?verification=123007.0&order_amount=146100.0"
+        >Comprar tarjeta en 3 cuotas <span>↗</span>
+      </a>
+      </div>
     </div>
-  </section>
+  </div>
+</section>

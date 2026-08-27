@@ -433,6 +433,25 @@ h1 {
   background: var(--paper);
   color: var(--clay);
 }
+
+.button-dark {
+  display: inline-flex;
+  gap: 18px;
+  align-items: center;
+  margin-top: 23px;
+  border: 1px solid var(--olive);
+  padding: 14px 22px;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  transition:
+    background 0.2s,
+    color 0.2s;
+}
+.button-dark:hover {
+  color: var(--paper);
+  background: var(--olive);
+}
 .footer {
   display: flex;
   align-items: center;
