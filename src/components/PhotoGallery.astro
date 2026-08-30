@@ -1,0 +1,349 @@
+---
+import { ArrowLeft, ArrowRight, Image as ImageIcon, X } from "lucide-astro";
+
+const photos = [
+  {
+    src: "/juyeze3.jpg",
+    alt: "La pareja caminando entre árboles",
+    category: "Juli y Eze",
+    size: "tall",
+  },
+  {
+    src: "/juyeze1.jpeg",
+    alt: "Manos de la pareja con sus anillos",
+    category: "Juli y Eze",
+    size: "square",
+  },
+  {
+    src: "/manos.jpg",
+    alt: "Celebración de la boda",
+    category: "Juli y Eze",
+    size: "wide",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=1400&q=85",
+    alt: "Decoración floral de la ceremonia",
+    category: "DetJuli y EzeaJuli y Ezelles",
+    size: "square",
+  },
+  {
+    src: "/juyez2.jpg",
+    alt: "La pareja junto al mar",
+    category: "Juli y Eze",
+    size: "tall",
+  },
+  {
+    src: "/juyeze4.jpg",
+    alt: "Atardecer de la pareja",
+    category: "Juli y Eze",
+    size: "wide",
+  },
+];
+
+const categories = ["Todos"];
+---
+
+<section class="mx-auto max-w-6xl px-5 py-20 md:px-10 md:py-28" id="galeria">
+  <div
+    class="mb-12 flex flex-col gap-8 md:mb-16 md:flex-row md:items-end md:justify-between"
+  >
+    <div class="max-w-xl">
+      <p
+        class="mb-5 font-mono text-xs uppercase tracking-[0.24em] text-primary"
+      >
+        Un pedacito de nosotros
+      </p>
+      <h2
+        class="font-serif text-5xl leading-[0.95] tracking-tight text-foreground md:text-7xl text-primary"
+      >
+        Nuestra historia<br /><span class="italic text-[var(--clay)]"
+          >en imágenes.</span
+        >
+      </h2>
+    </div>
+  </div>
+
+  <!-- Botones de filtrado -->
+  <div
+    class="mb-8 flex flex-wrap items-center gap-x-6 gap-y-3 border-y border-border py-4"
+  >
+    {
+      categories.map((category) => (
+        <button
+          type="button"
+          data-filter={category}
+          class={`filter-btn text-xs uppercase tracking-[0.18em] transition-colors ${category === "Todos" ? "font-semibold text-primary" : "text-muted-foreground hover:text-foreground"}`}
+          aria-pressed={category === "Todos" ? "true" : "false"}
+        >
+          {category}
+        </button>
+      ))
+    }
+    <span
+      class="ml-auto hidden items-center gap-2 text-xs text-muted-foreground md:flex"
+    >
+      <ImageIcon size={14} strokeWidth={1.5} />
+      <span id="photo-count">{photos.length}</span> recuerdos
+    </span>
+  </div>
+
+  <!-- Rejilla de fotos -->
+  <div class="grid grid-cols-2 gap-3 md:grid-cols-4 md:gap-5" id="photo-grid">
+    {
+      photos.map((photo, index) => (
+        <button
+          type="button"
+          data-index={index}
+          data-category={photo.category}
+          data-src={photo.src}
+          data-alt={photo.alt}
+          class={`photo-card group relative overflow-hidden bg-muted text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-4 ${
+            photo.size === "tall"
+              ? "row-span-2 aspect-[3/4]"
+              : photo.size === "wide"
+                ? "col-span-2 aspect-[2/1]"
+                : "aspect-square"
+          }`}
+          aria-label={`Abrir foto: ${photo.alt}`}
+        >
+          <img
+            src={photo.src}
+            alt={photo.alt}
+            class="h-full w-full object-cover transition duration-700 group-hover:scale-105"
+            loading="lazy"
+          />
+          <span class="absolute inset-0 bg-foreground/0 transition group-hover:bg-foreground/15" />
+          <span class="absolute bottom-3 left-3 font-mono text-[10px] uppercase tracking-[0.18em] text-transparent transition group-hover:text-background">
+            {photo.category}
+          </span>
+        </button>
+      ))
+    }
+  </div>
+
+  <!-- Modal / Lightbox oculto por defecto -->
+  <dialog
+    id="lightbox"
+    class="lightbox-dialog m-auto max-w-5xl w-[calc(100%-2rem)] max-h-[calc(100vh-2rem)] bg-transparent p-4 open:animate-fade-in md:p-10"
+    aria-label="Visor de fotografías"
+  >
+    <button
+      type="button"
+      id="close-btn"
+      class="lightbox-close"
+      aria-label="Cerrar visor"
+    >
+      <X size={20} />
+    </button>
+
+    <button
+      type="button"
+      id="prev-btn"
+      class="lightbox-nav lightbox-prev"
+      aria-label="Foto anterior"
+    >
+      <ArrowLeft size={20} />
+    </button>
+
+    <figure
+      class="lightbox-panel flex max-h-full max-w-5xl flex-col items-center gap-4"
+    >
+      <img
+        id="lightbox-img"
+        src=""
+        alt=""
+        class="max-h-[70vh] w-auto max-w-full object-contain"
+      />
+      <figcaption
+        id="lightbox-caption"
+        class="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground"
+      >
+      </figcaption>
+    </figure>
+
+    <button
+      type="button"
+      id="next-btn"
+      class="lightbox-nav lightbox-next"
+      aria-label="Siguiente foto"
+    >
+      <ArrowRight size={20} />
+    </button>
+  </dialog>
+</section>
+
+<style>
+  .lightbox-dialog::backdrop {
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(2px);
+  }
+
+  .lightbox-panel {
+    border: 1px solid var(--olive);
+    background: var(--paper);
+    padding: 1.5rem;
+  }
+
+  .lightbox-close,
+  .lightbox-nav {
+    position: absolute;
+    background: none;
+    border: none;
+    color: var(--olive);
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 9999px;
+    transition: background 0.2s;
+  }
+
+  .lightbox-close:hover,
+  .lightbox-nav:hover {
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  .lightbox-close {
+    top: 1.25rem;
+    right: 1.25rem;
+  }
+
+  .lightbox-nav {
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .lightbox-prev {
+    left: 1rem;
+  }
+  .lightbox-next {
+    right: 1rem;
+  }
+
+  @media (min-width: 768px) {
+    .lightbox-prev {
+      left: 2rem;
+    }
+    .lightbox-next {
+      right: 2rem;
+    }
+  }
+</style>
+
+<script>
+  // Script ejecutable del lado del cliente
+  let selectedIndex: number | null = null;
+  let visiblePhotos: HTMLElement[] = [];
+
+  const filterBtns =
+    document.querySelectorAll<HTMLButtonElement>(".filter-btn");
+  const photoCards = Array.from(
+    document.querySelectorAll<HTMLElement>(".photo-card"),
+  );
+  const photoCount = document.getElementById("photo-count");
+
+  const lightbox = document.getElementById("lightbox") as HTMLDialogElement;
+  const lightboxImg = document.getElementById(
+    "lightbox-img",
+  ) as HTMLImageElement;
+  const lightboxCaption = document.getElementById("lightbox-caption");
+  const closeBtn = document.getElementById("close-btn");
+  const prevBtn = document.getElementById("prev-btn");
+  const nextBtn = document.getElementById("next-btn");
+
+  function updateVisiblePhotos() {
+    visiblePhotos = photoCards.filter((card) => card.style.display !== "none");
+    if (photoCount) photoCount.textContent = visiblePhotos.length.toString();
+  }
+
+  // Filtrado por categoría
+  filterBtns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const category = btn.getAttribute("data-filter");
+
+      filterBtns.forEach((b) => {
+        b.classList.remove("font-semibold", "text-primary");
+        b.classList.add("text-muted-foreground");
+        b.setAttribute("aria-pressed", "false");
+      });
+
+      btn.classList.add("font-semibold", "text-primary");
+      btn.classList.remove("text-muted-foreground");
+      btn.setAttribute("aria-pressed", "true");
+
+      photoCards.forEach((card) => {
+        const photoCategory = card.getAttribute("data-category");
+        if (category === "Todos" || photoCategory === category) {
+          card.style.display = "";
+        } else {
+          card.style.display = "none";
+        }
+      });
+
+      updateVisiblePhotos();
+    });
+  });
+
+  // Modal / Lightbox
+  function updateLightbox() {
+    if (selectedIndex === null || !visiblePhotos[selectedIndex]) return;
+
+    const currentCard = visiblePhotos[selectedIndex];
+    const src = currentCard.getAttribute("data-src") || "";
+    const alt = currentCard.getAttribute("data-alt") || "";
+    const category = currentCard.getAttribute("data-category") || "";
+
+    lightboxImg.src = src;
+    lightboxImg.alt = alt;
+    if (lightboxCaption) {
+      lightboxCaption.textContent = `${category} · ${selectedIndex + 1} / ${visiblePhotos.length}`;
+    }
+  }
+
+  function openLightbox(cardElement: HTMLElement) {
+    updateVisiblePhotos();
+    selectedIndex = visiblePhotos.indexOf(cardElement);
+    if (selectedIndex !== -1) {
+      updateLightbox();
+      lightbox?.showModal();
+    }
+  }
+
+  function closeLightbox() {
+    lightbox?.close();
+    selectedIndex = null;
+  }
+
+  function showPrevious() {
+    if (selectedIndex === null) return;
+    selectedIndex =
+      (selectedIndex - 1 + visiblePhotos.length) % visiblePhotos.length;
+    updateLightbox();
+  }
+
+  function showNext() {
+    if (selectedIndex === null) return;
+    selectedIndex = (selectedIndex + 1) % visiblePhotos.length;
+    updateLightbox();
+  }
+
+  // Event Listeners
+  photoCards.forEach((card) => {
+    card.addEventListener("click", () => openLightbox(card));
+  });
+
+  lightbox?.addEventListener("click", (e) => {
+    if (e.target === lightbox) closeLightbox();
+  });
+
+  closeBtn?.addEventListener("click", closeLightbox);
+  prevBtn?.addEventListener("click", showPrevious);
+  nextBtn?.addEventListener("click", showNext);
+
+  lightbox?.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") closeLightbox();
+    if (event.key === "ArrowLeft") showPrevious();
+    if (event.key === "ArrowRight") showNext();
+  });
+
+  // Inicializar conteo
+  updateVisiblePhotos();
+</script>
