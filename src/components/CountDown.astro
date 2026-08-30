@@ -25,12 +25,13 @@ const weddingDateISO = "2026-12-06T12:00:00-03:00";
   aria-label="Cuenta regresiva para la boda"
   data-wedding-date={weddingDateISO}
 >
-  <div class="shell countdown-inner">
+
+  <div class="shell flex flex-col lg:flex-row gap-10 justify-between items-center">
     <div>
       <p class="section-label">Falta cada vez menos</p>
       <h2>Nos vemos en <em>la boda.</em></h2>
     </div>
-    <div class="countdown-units" role="timer" aria-live="polite">
+    <div class="flex gap-0 flex-row" role="timer" aria-live="polite">
       <div class="countdown-unit">
         <strong data-unit="days">00</strong><span>Días</span>
       </div>

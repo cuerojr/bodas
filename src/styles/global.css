@@ -534,12 +534,7 @@ h1 {
   color: var(--paper);
   padding-block: 42px;
 }
-.countdown-inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 40px;
-}
+
 .countdown .section-label {
   color: var(--clay);
   margin: 0 0 10px;
@@ -547,10 +542,7 @@ h1 {
 .countdown h2 {
   font-size: clamp(38px, 5vw, 62px);
 }
-.countdown-units {
-  display: flex;
-  gap: 0;
-}
+
 .countdown-unit {
   display: flex;
   min-width: 100px;
