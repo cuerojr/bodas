@@ -44,6 +44,14 @@
         ></textarea>
       </div>
 
+      <div class="field">
+        <label for="rsvp-restriccion">Confirmar asistencia</label>
+        <select id="rsvp-restriccion" name="asistencia">
+          <option value="si">Obvio que voy</option>
+          <option value="no">No voy</option>
+        </select>
+      </div>
+
       <button type="submit" class="button rsvp-submit cursor-pointer">
         Enviar confirmación <span>↗</span>
       </button>
@@ -89,6 +97,7 @@
       "",
       `Nombre y apellido: ${data.nombre}`,
       `Restricción alimentaria: ${restricciones[data.restriccion] ?? data.restriccion}`,
+      `Asistiré: ${data.asistencia}`
     ];
 
     if (data.comentario?.trim()) {
@@ -103,6 +112,7 @@
     window.open(url, "_blank", "noopener,noreferrer");
 
     form.reset();
+    if (status) status.textContent = "";
     setTimeout(() => modal?.close(), 800);
   });
 </script>
