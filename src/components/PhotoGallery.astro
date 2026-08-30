@@ -1,5 +1,6 @@
 ---
 import { ArrowLeft, ArrowRight, Image as ImageIcon, X } from "lucide-astro";
+import SectionLabel from "./SectionLabel.astro";
 
 const photos = [
   {
@@ -47,19 +48,15 @@ const categories = ["Todos"];
   <div
     class="mb-12 flex flex-col gap-8 md:mb-16 md:flex-row md:items-end md:justify-between"
   >
-    <div class="max-w-xl">
-      <p
-        class="mb-5 font-mono text-xs uppercase tracking-[0.24em] text-primary"
-      >
-        Un pedacito de nosotros
-      </p>
-      <h2
-        class="font-serif text-5xl leading-[0.95] tracking-tight text-foreground md:text-7xl text-primary"
-      >
-        Nuestra historia<br /><span class="italic text-[var(--clay)]"
-          >en imágenes.</span
-        >
-      </h2>
+    <div class="section-heading">
+      <div>
+        <SectionLabel>Un pedacito de nosotros</SectionLabel>
+        <h2 class="text-[var(--olive)] pt-4">
+          Nuestra historia<br /><em class="italic text-[var(--clay)]"
+            >en imágenes.</em
+          >
+        </h2>
+      </div>
     </div>
   </div>
 
