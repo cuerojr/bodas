@@ -15,11 +15,10 @@ import Confirmation from "./Confirmation.astro";
 import Gifts from "./Gifts.astro";
 import Celebration, { type ScheduleItem } from "./Celebration.astro";
 import PhotoGallery from "./PhotoGallery.astro";
-
 ---
 
 <main>
-  <section class="hero" id="inicio" >
+  <section class="hero" id="inicio">
     <div class="hero-wash"></div>
     <nav class="nav shell" aria-SectionLabel="Navegación principal">
       <a class="monogram" href="#inicio" aria-SectionLabel="Julieta y Ezequiel"
@@ -50,7 +49,9 @@ import PhotoGallery from "./PhotoGallery.astro";
     <SectionLabel>Nuestra boda</SectionLabel>
     <div class="intro-grid pt-8">
       <div>
-        <h2 class="text-[var(--olive)]">Un día para<br /><em>recordar siempre.</em></h2>
+        <h2 class="text-[var(--olive)]">
+          Un día para<br /><em>recordar siempre.</em>
+        </h2>
         <div class="pt-8">
           <p class="text-balance">
             Un día completo al aire libre en contacto con la naturaleza, con
@@ -63,16 +64,26 @@ import PhotoGallery from "./PhotoGallery.astro";
               Fe</span
             >
           </div>
-		  <iframe class="aspect-video mt-12" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3351.720829205909!2d-60.771221499999996!3d-32.852642599999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95b64f20593e7f25%3A0x56c5ed44a28e10b8!2sEl%20Campito%20Eventos!5e0!3m2!1ses-419!2sar!4v1787774806598!5m2!1ses-419!2sar" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+          <iframe
+            class="aspect-video mt-12"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3351.720829205909!2d-60.771221499999996!3d-32.852642599999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95b64f20593e7f25%3A0x56c5ed44a28e10b8!2sEl%20Campito%20Eventos!5e0!3m2!1ses-419!2sar!4v1787774806598!5m2!1ses-419!2sar"
+            width="100%"
+            height="100%"
+            style="border:0;"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="strict-origin-when-cross-origin"></iframe>
         </div>
       </div>
       <video
-        class="w-full "
+        class="w-full"
         crossorigin="anonymous"
         src="/dia.mp4"
         autoplay
         muted
-        loop></video>
+        loop
+        playsinline
+        webkit-playsinline></video>
     </div>
     <div class="info-strip">
       <div>
